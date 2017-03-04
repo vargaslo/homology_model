@@ -1,5 +1,3 @@
-# mod9.15 1_do.py
-
 from modeller import *
 
 log.verbose()
@@ -7,6 +5,7 @@ env = environ()
 
 #-- Prepare the input files
 
+infile = 'SpmXandFriends.pir'
 which = 'pdb_95'
 #which = 'pdball'
 
@@ -25,7 +24,7 @@ sdb.read(seq_database_file=which+'.bin', seq_database_format='BINARY',
 
 #-- Read in the target sequence/alignment
 aln = alignment(env)
-aln.append(file='SpmXandFriends.pir', alignment_format='PIR', align_codes='ALL')
+aln.append(file=infile, alignment_format='PIR', align_codes='ALL')
 
 
 #-- Convert the input sequence/alignment into
