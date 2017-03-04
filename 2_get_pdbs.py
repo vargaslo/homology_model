@@ -2,7 +2,6 @@ import os
 import requests
 import subprocess
 
-
 infile = 'template_candidates.ali'
 
 # Retrieve the pdb codes of the template structures
@@ -39,3 +38,4 @@ for pdb_code in list(set(pdb_codes)):
     # unzip the *.pdb.gz file
     cmd = 'gunzip {}'.format(filename)
     subprocess.call(cmd.split())
+    
