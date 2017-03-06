@@ -3,7 +3,7 @@ import modeller.salign
 
 log.verbose()
 env = environ()
-env.io.atom_files_directory = ['pdb']
+env.io.atom_files_directory = ['pdb', 'receivedPDBs']
 
 def get_pdbcode_chain(prffile):
     mylist = []
@@ -24,16 +24,9 @@ pdb_chain = get_pdbcode_chain('template_candidates.prf.filtered')
 
 # add in P22
 pdb_chain.append(('2anx', 'A', 'FIRST', 'LAST'))
-#m = model(env, file='2anx')
-#aln.append_model(m, atom_files='2anx', align_codes='P22/1-146')
 
 # add in SpmX
 pdb_chain.append(('spmx', 'A', 'FIRST', 'LAST'))
-#m = model(env, file='spmx')
-#aln.append_model(m, atom_files='spmx', align_codes='SpmX')
-
-
-
 
 aln = alignment(env)
 for i in pdb_chain:
