@@ -2,21 +2,19 @@ import os
 import requests
 import subprocess
 
-infile = 'template_candidates.ali'
+infile = 'template_candidates.prf.filtered'
 
 # Retrieve the pdb codes of the template structures
 pdb_codes = []
-type_line = None
 with open (infile) as fin:
-    for i, line in enumerate(fin):
-        if '>P1;' in line:
-            type_line = i + 1
-            pdb_code = line[4:8]
-            chain = line[8]
-        if i==type_line and 'structure' in line:
-            pdb_codes.append(pdb_code)
-            pdb_code = None
-            chain = None
+    for line in fin:
+        if line[0]!='#':
+            line_chunks = line.split()
+            if len(line_chunks)==13:
+                pdb_code = line_chunks[1][0:4]
+                chain = line_chunks[1][4]
+                pdb_codes.append(pdb_code)
+                pdb_code = None
 
 # Create output directory to hold PDB files if not exist
 dirpath = 'pdb'
